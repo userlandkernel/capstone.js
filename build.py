@@ -98,6 +98,11 @@ def compileCapstone(targets):
     cmd = os.path.expandvars('$EMSCRIPTEN/emcc')
     cmd += ' -Os --memory-init-file 0'
     cmd += ' capstone/libcapstone.a'
+    cmd += ' -s NO_FILESYSTEM=1'
+    cmd += ' -s "EXTRA_EXPORTED_RUNTIME_METHODS=[\'ccall\',\'getValue\',\'setValue\',\'writeArrayToMemory\',\'UTF8ToString\',]"'
+    cmd += ' -s ENVIRONMENT=web'
+    cmd += ' -s WASM=0'
+    cmd += ' -s ALLOW_MEMORY_GROWTH=1'
     cmd += ' -s EXPORTED_FUNCTIONS=\"[\''+ '\', \''.join(EXPORTED_FUNCTIONS) +'\']\"'
     cmd += ' -s MODULARIZE=1'
     cmd += ' -s EXPORT_NAME="\'MCapstone\'"'

@@ -136,10 +136,10 @@ var cs = {
         }
 
         // ASCII representation of instruction mnemonic
-        this.mnemonic = MCapstone.Pointer_stringify(pointer + 34);
+        this.mnemonic = MCapstone.UTF8ToString(pointer + 34);
 
         // ASCII representation of instruction operands
-        this.op_str = MCapstone.Pointer_stringify(pointer + 66);
+        this.op_str = MCapstone.UTF8ToString(pointer + 66);
 
         // Details
         var detail = {};
